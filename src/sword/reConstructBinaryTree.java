@@ -1,8 +1,6 @@
 package sword;
 
 
-import java.util.HashMap;
-
 /**
  * 重建二叉树
  * <p>
@@ -16,36 +14,44 @@ import java.util.HashMap;
 public class reConstructBinaryTree {
 
     public static TreeNode reConstructBinaryTree(int[] pre, int[] in) {
+        TreeNode root = reConstructBinaryTree(pre, 0, pre.length - 1, in, 0, in.length - 1);
+        return root;
+    }
 
-        if (pre == null || in == null) {
+    private static TreeNode reConstructBinaryTree(int[] pre, int startPre, int endPre, int[] in, int startIn, int endIn) {
+        if (startPre > endPre || startIn > endIn) {
             return null;
         }
 
+        //创建根节点，根节点肯定是前序遍历的第一个数
+        TreeNode root = new TreeNode(pre[startPre]);
 
-        return null;
+        for (int i = startIn; i < endIn; i++) {
+            //找到中序遍历根节点所在位置,存放于变量gen中
+            if (in[i] == pre[startPre]) {
+                //对于中序遍历，根节点左边的节点位于二叉树的左边，根节点右边的节点位于二叉树的右边
+                //和shell排序的思想类似，取出前序和中序遍历根节点左边和右边的子树
+                //递归，再对其进行上述所有步骤，即再区分子树的左、右子子数，直到叶节点
+                //前序第一个为根节点
+                root.left = reConstructBinaryTree(pre, startPre + 1, startPre + i - startIn, in, startIn, i - 1);
+                root.right = reConstructBinaryTree(pre, i - startIn + startPre + 1, endPre, in, i + 1, endIn);
+            }
+        }
+        return root;
     }
 
 
-    public TreeNode preIn(int[] p, int pi, int pj, int[] n, int ni, int nj, HashMap<Integer,Integer> map){
-        if(pi>pj){
-            return null;
+    private static class TreeNode {
+        int value;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int value) {
+            this.value = value;
         }
 
-        TreeNode head = new TreeNode(p[pi]);
-        int index = map.get(p[pi]);
-        head.left = preIn(p,pi+1,)
     }
 
 }
 
 
-class TreeNode {
-    int value;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int value) {
-        this.value = value;
-    }
-
-}
