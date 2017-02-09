@@ -12,14 +12,42 @@ package sword;
  */
 public class minNumberInRotateArray {
 
-    public int solution(int[] array) {
+    public static int solution(int[] array) {
+        if (array.length == 0) {
+            return 0;
+        }
 
+        if (array.length == 1) {
+            return array[0];
+        }
 
-        return Integer.parseInt(null);
+        int low = 0;
+        int high = array.length - 1;
+        int mid = low;
+
+        while (array[low] >= array[high]) {
+            //数组中就只有两个数,最小的为后者
+            if (high - low == 1) {
+                mid = high;
+                break;
+            }
+
+            //查找中间位置
+            mid = (high + low) / 2;
+            if (array[mid] >= array[low]) {
+                low = mid;
+            } else if (array[mid] <= array[high]) {
+                high = mid;
+            }
+        }
+        return array[mid];
     }
 
     public static void main(String[] args) {
 
+        int[] array = {1, 1, 0, 1, 1, 1};
+        int solution = solution(array);
+        System.out.println(solution);
     }
 
 }
