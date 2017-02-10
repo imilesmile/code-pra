@@ -11,13 +11,20 @@ package sword;
  */
 public class ReverseList {
 
-    public void solution(ListNode head) {
+    public static ListNode solution(ListNode head) {
         ListNode reserveddHead = null;
         ListNode pNode = head;
         ListNode pPrev = null;
         while (pNode != null) {
-            ListNode pNext
-        }
+            ListNode pNext = pNode.getNext();
+            if (pNext == null) {
+                reserveddHead = pNode;
+            }
 
+            pNode.setNext(pPrev);
+            pPrev = pNode;
+            pNode = pNext;
+        }
+        return reserveddHead;
     }
 }
