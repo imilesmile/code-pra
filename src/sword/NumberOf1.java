@@ -15,10 +15,29 @@ public class NumberOf1 {
 
     public static int solution(int n) {
 
-        return 0;
+        int count = 0;
+        while (n > 0) {
+            if ((n & 1) == 1) {
+                ++count;
+            }
+            n >>= 1;
+        }
+        return count;
+    }
+
+    public static int solution1(int n) {
+
+        int count = 0;
+        while (n != 0) {
+            count++;
+            n = (n - 1) & n;
+        }
+        return count;
     }
 
     public static void main(String[] args) {
+        int n = 9;
+        System.out.println(solution(n));
 
     }
 }

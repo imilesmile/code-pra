@@ -17,7 +17,7 @@ public class printListFromTailToHead {
 
         Stack<Integer> stack = new Stack<>();
         while (listNode != null) {
-            stack.push(listNode.value);
+            stack.push(listNode.getValue());
         }
 
         while (!stack.isEmpty()){
@@ -34,11 +34,3 @@ public class printListFromTailToHead {
 }
 
 
-class ListNode {
-    int value;
-    ListNode next;
-
-    ListNode(int value) {
-        this.value = value;
-    }
-}
