@@ -33,9 +33,10 @@ public class printMatrix {
         int bottom = row;
         while (left <= right && top <= bottom) {
             //left to right
-            for (int i=left;i<=right;++i)
+            //for (int i=left;i<=right;++i)
 
         }
+        return null;
     }
 
     public static void main(String[] args) {

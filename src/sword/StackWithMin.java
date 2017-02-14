@@ -40,10 +40,10 @@ public class StackWithMin {
         }
     }
 
-    public int top() {
-
-    }
-
-    public int min() {
-    }
+    //public int top() {
+    //
+    //}
+    //
+    //public int min() {
+    //}
 }
