@@ -16,12 +16,12 @@ public class ReverseList {
         ListNode pNode = head;
         ListNode pPrev = null;
         while (pNode != null) {
-            ListNode pNext = pNode.getNext();
+            ListNode pNext = pNode.next;
             if (pNext == null) {
                 reserveddHead = pNode;
             }
 
-            pNode.setNext(pPrev);
+            pNode.next = pPrev;
             pPrev = pNode;
             pNode = pNext;
         }

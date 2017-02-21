@@ -17,10 +17,10 @@ public class printListFromTailToHead {
 
         Stack<Integer> stack = new Stack<>();
         while (listNode != null) {
-            stack.push(listNode.getValue());
+            stack.push(listNode.value);
         }
 
-        while (!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             list.add(stack.pop());
         }
 

@@ -16,21 +16,21 @@ public class deleteListNode {
         }
 
         //找到要删除节点的下一个节点.
-        if (toBeDeleted.getNext() != null) {
-            ListNode p = toBeDeleted.getNext();
-            toBeDeleted.setValue(p.getValue());
+        if (toBeDeleted.next != null) {
+            ListNode p = toBeDeleted.next;
+            toBeDeleted.value = p.value;
             //删除p节点
-            toBeDeleted.setNext(p.getNext());
+            toBeDeleted.next = p.next;
         } else if (head == toBeDeleted) {
             //如果头结点就是要删除的节点
             head = null;
         } else {
             //删除尾节点
             ListNode currentNode = head;//用于遍历链表
-            while (currentNode.getNext() != toBeDeleted) {
-                currentNode = currentNode.getNext();
+            while (currentNode.next != toBeDeleted) {
+                currentNode = currentNode.next;
             }
-            currentNode.setNext(null);
+            currentNode.next = null;
         }
     }
 }

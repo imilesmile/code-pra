@@ -34,12 +34,12 @@ public class Merge {
         ListNode node_1 = list1;
         ListNode node_2 = list2;
 
-        if (node_1.getValue() < node_2.getValue()) {
+        if (node_1.value < node_2.value) {
             head = node_1;
-            head.setNext(solution(node_1.getNext(),node_2));
-        }else {
+            head.next = solution(node_1.next, node_2);
+        } else {
             head = node_2;
-            head.setNext(solution(node_1, node_2.getNext()));
+            head.next = (solution(node_1, node_2.next));
         }
         return head;
     }

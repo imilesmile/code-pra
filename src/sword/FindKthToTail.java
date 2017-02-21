@@ -16,17 +16,17 @@ public class FindKthToTail {
         ListNode postPoint = head;
 
         for (int i = 0; i < k - 1; i++) {
-            if (prePoint.getNext() != null) {
-                prePoint = prePoint.getNext();
+            if (prePoint.next != null) {
+                prePoint = prePoint.next;
             } else {
                 return null;
             }
 
         }
 
-        while (prePoint.getNext() != null) {
-            prePoint = prePoint.getNext();
-            postPoint = postPoint.getNext();
+        while (prePoint.next != null) {
+            prePoint = prePoint.next;
+            postPoint = postPoint.next;
         }
         return postPoint;
     }
@@ -39,12 +39,12 @@ public class FindKthToTail {
         ListNode h3 = new ListNode(4);
         ListNode h4 = new ListNode(5);
         ListNode h5 = new ListNode(6);
-        head.setNext(h1);
-        h1.setNext(h2);
-        h2.setNext(h3);
-        h3.setNext(h4);
-        h4.setNext(h5);
-        h5.setNext(null);
+        head.next = h1;
+        h1.next = h2;
+        h2.next = h3;
+        h3.next = h4;
+        h4.next = h5;
+        h5.next = null;
 
         ListNode p = solution(head, 3);
     }
