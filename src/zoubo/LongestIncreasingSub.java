@@ -92,11 +92,50 @@ public class LongestIncreasingSub {
 
 
     /**
-     * MaxV里面的数组下标代表了长度为index的最长子序列末尾元素，反过来就是末尾元素在MaxV里对应的下标就是他子序列的长度
+     * arr = {2 1 5 3 6 4 8 9 7}
+     * <p>
+     * 首先i=1, 遍历到1， 1 通过跟MaxV[nMaxLength]比较: 1<MaxV[nMaxLength],
+     * 发现1更有潜力（更小的有潜力，更小的替换之）
+     * 1 更有潜力, 那么1就替换MaxV[nMaxLength] 即 MaxV[nMaxLength] =1 ;
+     * 这个时候 MaxV={1}， nMaxlength = 1，LIS[1] = 1;
+     * <p>
+     * 然后 i =2, 遍历到5， 5通过跟MaxV[nMaxLength]比较, 5>MaxV[nMaxLength],
+     * 发现5 更大； 链接到目前得到的LIS尾部；
+     * 这个时候 MaxV={1，5}， nMaxlength++ = 2， MaxV[nMaxLength]=5， LIS[i] = 1+1 = 2;
+     * <p>
+     * 然后 i =3，遍历到3, 3 通过跟MaxV[nMaxLength]比较, 3<MaxV[nMaxLength],
+     * 发现3更有 潜力，然后从 nMaxLength往前比较，找到第一个刚刚比3大元素替换之。（稍后解释什么叫刚刚大）
+     * 这个时候 MaxV={1,3}， nMaxlength = 2; 3只是替换， LIS[i]不变 = LIS[3]= 2;
+     * <p>
+     * 然后 i =4，遍历到6， 6 通过跟 MaxV[nMaxLength]比较, 6>MaxV[nMaxLength],
+     * 发现6更大； 6就应该链接到目前得到的LIS尾部；
+     * 这个时候，MaxV={1,3,6} ，nMaxlength = 3，MaxV[nMaxLength+1]=6 , LIS[4] = 3
+     * <p>
+     * 然后i =5，遍历到4, 4 通过跟MaxV[nMaxLength] = 6比较, 4<MaxV[nMaxLength],
+     * 发现4更有潜力，然后从nMaxLength往前比较，找到刚刚比4大元素 也就是 6替换之。
+     * 这个时候 MaxV={1,3,4}， nMaxlength = 3，4只是替换， LIS[i]不变 = LIS[5]= 3;
+     * <p>
+     * 然后i=6, 遍历到8， 8通过跟MaxV[nMaxLength]比较, 8>MaxV[nMaxLength],
+     * 发现8更大； 8就应该链接到目前得到的LIS尾部；
+     * 这个时候 MaxV={1,3,4,8}， nMaxlength = 4, Maxv[nMaxlength]=8 LIS[6]=4,
+     * <p>
+     * 然后i=7, 遍历到9， 9通过跟MaxV[nMaxLength]比较, 9>MaxV[nMaxLength],
+     * 发现9更大； 9就应该链接到目前得到的LIS尾部；
+     * 这个时候 MaxV={1,3,4,8，9}， nMaxlength = 5, Maxv[nmaxlength]=9, LIS[7] = 5;
+     * <p>
+     * 然后i=8, 遍历到7, 7 通过跟MaxV[nMaxLength] = 9比较, 7<MaxV[nMaxLength],
+     * 发现7更有潜力，然后从nMaxLength往前比较，找到第一个比7大元素 也就是 8替换之。
+     * 这个时候 MaxV={1,3,4,7,9}, nMaxLength = 5, Maxv[nMaxlength]=9
+     * LIS[8] = LIS[替换掉的index] = 4;
+     * <p>
+     * <p>
      * -- 	    2 	1 	5 	    3 	    6 	    4 	    8 	        9 	        7
      * i 	    1 	2 	3 	    4 	    5 	    6 	    7 	        8 	        9
      * LIS 	    1 	1 	2 	    2 	    3 	    3 	    4 	        5 	        4
      * MaxV 	2 	1 	1,5 	1,3 	1,3,6 	1,3,4 	1,3,4,8 	1,3,4,8,9 	1,3,4,7
+     * <p>
+     * <p>
+     * MaxV里面的数组下标代表了长度为index的最长子序列末尾元素，反过来就是末尾元素在MaxV里对应的下标就是他子序列的长度
      *
      * @param arr
      * @return
