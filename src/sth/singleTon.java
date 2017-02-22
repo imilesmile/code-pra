@@ -6,7 +6,7 @@ package sth;
  * @Author: milo
  * @Create: 2017-02-15
  */
-public class singleTon {
+class singleTon {
 
     private singleTon() {
     }
