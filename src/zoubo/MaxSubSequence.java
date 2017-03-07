@@ -109,7 +109,6 @@ public class MaxSubSequence {
     }
 
     public static int solution5(int[] arr) {
-        int len = arr.length;
         int sub = arr[0];
         int maxsub = arr[0];
 
@@ -129,6 +128,6 @@ public class MaxSubSequence {
 
         int[] arr = {1, 3, 6, -98, 23, 56, 77,90};
 
-        System.out.println(solution3(arr));
+        System.out.println(solution5(arr));
     }
 }

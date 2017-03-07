@@ -44,7 +44,10 @@ public class LongestCommonSub {
     }
 
     //输出显示
-    public static void Display(int[][] b, String[] x, int i, int j) {//回溯输出值,由于是公共的,找一个字符串输出就可以
+    public static void Display(int[][] b, String[] x, int Alen, int Blen) {//回溯输出值,由于是公共的,找一个字符串输出就可以
+        int i = Alen;
+        int j = Blen;
+
         if (i == 0 || j == 0) {
             return;
         }
